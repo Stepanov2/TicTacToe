@@ -23,4 +23,3 @@ def is_a_vaild_int(inputstring, condition=range(1,10)):
     except ValueError:
         return False
     return integer in condition
-
