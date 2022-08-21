@@ -2,10 +2,7 @@
 1 means cross
 -1 means null
 0 means nothing"""
-username=''
-playfield = []
-grid_size = 3 #play on {grid_size} by {grid_size} playfield
-in_line = 3 #match {in_line} in row to win
+from globals import *
 def initialize_playfield():
     """Filling playfield with a matrix of zeroes"""
     global playfield
@@ -16,6 +13,7 @@ def initialize_playfield():
         for j in range(grid_size):
             grid_line.append(0) #aaaa
         playfield.append(grid_line)
+    print(playfield)
     return
 
 def choice_to_index(choice):
@@ -25,7 +23,7 @@ def choice_to_index(choice):
     return (choice // grid_size, choice % grid_size)
 
 def check_win_condition(one_or_minus_one):
-    """Determines if the game was one after this move"""
+    """Determines if the game was won after this move"""
     global playfield
     global grid_size
     global in_line
@@ -38,8 +36,8 @@ def check_win_condition(one_or_minus_one):
         for i in range(grid_size):
 
             if sum(playfield[i][offset:grid_size + offset]) == won: return True
-            print(sum(playfield[i][offset:grid_size + offset]))
-            print(sum(playfield[offset:grid_size + offset][i]))
+            #print(sum(playfield[i][offset:grid_size + offset]))
+            #print(sum(playfield[offset:grid_size + offset][i]))
             if sum(playfield[offset:grid_size + offset][i]) == won: return True
 
 
@@ -49,11 +47,5 @@ def check_win_condition(one_or_minus_one):
 
 
     return False
-initialize_playfield()
 
-playfield[2] = [-1,0,1]
-playfield[0][1]=1
-playfield[1][1]=1
-playfield[2][1]=1
-print(playfield)
-print(check_win_condition(1))
+
