@@ -35,21 +35,25 @@ def check_win_condition(one_or_minus_one):
     #checking rows and columns
     for offset in range(max_offset + 1):
 
-        for i in range(in_line):
-            row_sum, col_sum = won, won
+        for i in range(grid_size):
 
-            for j in range(in_line):
-                print(playfield[i][j+offset])
-                row_sum-=playfield[i][j+offset]
-                col_sum-=playfield[j+offset][i]
-            if not row_sum or not col_sum:
-                return True
+            if sum(playfield[i][offset:grid_size + offset]) == won: return True
+            print(sum(playfield[i][offset:grid_size + offset]))
+            print(sum(playfield[offset:grid_size + offset][i]))
+            if sum(playfield[offset:grid_size + offset][i]) == won: return True
+
+
+
 
 
 
 
     return False
 initialize_playfield()
-print(playfield)
 
+playfield[2] = [-1,0,1]
+playfield[0][1]=1
+playfield[1][1]=1
+playfield[2][1]=1
+print(playfield)
 print(check_win_condition(1))
