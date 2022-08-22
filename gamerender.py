@@ -1,6 +1,12 @@
 """Functions related to printing stuff"""
 import globals
 import numpy as np #Cheats enabled=)
+
+
+
+def clearscreen():
+    print('\n' * 40)
+
 #TODO: подумать, как это всё таки перепилить с декораторами
 """ 
 def _charsetpicker(i,j):

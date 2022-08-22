@@ -6,9 +6,9 @@ def yes_or_no(inputstring):
     # leave only letters, digits and inner spaces
     inputstring = re.sub('[^ \w]', '', inputstring.strip().lower())
     yeslist = ('da', 'yes', 'yep', 'true', 'likely', 'да',
-               'ага', 'пожалуй', 'давай', 'угу', 'вероятно')
+               'ага', 'пожалуй', 'давай', 'угу', 'вероятно', '1')
     nolist = ('net', 'no', 'nope', 'false', 'unlikely', 'нет',
-              'неа', 'да нет же', 'фигушки', 'маловероятно')
+              'неа', 'да нет же', 'фигушки', 'маловероятно', '0')
 
     if inputstring in yeslist:
         return True
