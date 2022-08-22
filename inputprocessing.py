@@ -9,7 +9,7 @@ def yes_or_no(inputstring):
                'ага', 'пожалуй', 'давай', 'угу', 'вероятно')
     nolist = ('net', 'no', 'nope', 'false', 'unlikely', 'нет',
               'неа', 'да нет же', 'фигушки', 'маловероятно')
-    if inputstring in yeslist:
+    if inputstring in yeslist: Sucssess
         return True
     if inputstring in nolist:
         return False
@@ -23,7 +23,7 @@ def is_a_vaild_int(inputstring, condition=lambda x: 1 <= x <10): #TODO try lamda
         integer = int(inputstring)
     except ValueError:
         return False
-    try: #got an iterable
+    try: #got an iterable as condition
         return integer in condition
     except TypeError: #likely got a lambda instead
         return condition(integer)
