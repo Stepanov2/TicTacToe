@@ -13,25 +13,20 @@ import gamelogic
 
 gamelogic.initialize_playfield()
 
-globals.playfield[2] = [-1,0,1]
-globals.playfield[0][1]=1
-globals.playfield[1][1]=1
-globals.playfield[2][1]=1
 
+while not gamelogic.check_win_condition():
+    gamerender.return_playfield()
+    playerinput = input(f'Ходят {globals.whose_turn[globals.currentplayer]} ')
+    while True:
+        if not inputprocessing.is_a_valid_int(playerinput, lambda x: 0 <= x <= globals.grid_size ** 2):
+            gamerender.return_playfield()
+            playerinput = input(f'Ваш ход - инвалид. Введите целое число от 1 до {globals.grid_size ** 2} ')
+            continue
+        if not gamelogic.check_move_validity(int(playerinput)):
+            gamerender.return_playfield()
+            playerinput = input(f'Ваш ход - инвалид, ибо эта клетка уже занята! ')
+            continue
+        break
+gamerender.return_playfield()
+print(f'Ура, победили {globals.whose_turn[-globals.currentplayer]}')
 
-gamerender.print_playfield()
-print(gamelogic.check_win_condition(1))
-
-
-print(globals.playfield[0][0:3])
-print(globals.playfield[1][0:3])
-print(globals.playfield[2][0:3])
-print()
-print(globals.playfield[0:3][0])
-print(globals.playfield[0:3][1])
-print(globals.playfield[0:3][2])
-
-print(inputprocessing.is_a_vaild_int('3', range(0,8)))
-print(inputprocessing.is_a_vaild_int('15', range(0,8)))
-print(inputprocessing.is_a_vaild_int('-2', range(0,8)))
-print(inputprocessing.is_a_vaild_int('-2'))

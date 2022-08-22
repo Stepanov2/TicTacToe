@@ -9,12 +9,14 @@ def yes_or_no(inputstring):
                'ага', 'пожалуй', 'давай', 'угу', 'вероятно')
     nolist = ('net', 'no', 'nope', 'false', 'unlikely', 'нет',
               'неа', 'да нет же', 'фигушки', 'маловероятно')
-    if inputstring in yeslist: Sucssess
+
+    if inputstring in yeslist:
         return True
-    if inputstring in nolist:
+    elif inputstring in nolist:
         return False
-    return None
-def is_a_vaild_int(inputstring, condition=lambda x: 1 <= x <10): #TODO try lamda X lambda x: 1 <= x <10 range(0,7)
+    else:
+        return None
+def is_a_valid_int(inputstring, condition=lambda x: 1 <= x < 10):
     """This checks that input is an int and in range [1..9]
     Specify different lambda function or iterable to use this code elsewhere
     """
