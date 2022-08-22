@@ -14,9 +14,10 @@ def yes_or_no(inputstring):
     if inputstring in nolist:
         return False
     return None
-def is_a_vaild_int(inputstring, condition=range(1,10)):
+def is_a_vaild_int(inputstring, condition=range(1,10)):#TODO try lamda X
     """This checks that input is an int and in range [1..9]
-    Specify different generator function to use this code elsewhere"""
+    Specify different generator function to use this code elsewhere
+    """
     if not isinstance(inputstring, str): return Flase
     try:
         integer = int(inputstring)

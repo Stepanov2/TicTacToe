@@ -1,12 +1,12 @@
 """Functions related to printing stuff"""
-from globals import *
+import globals
 
 def print_playfield():
-    global playfield
-    global grid_size
-    charset = ('○', '▯', 'X')
-    for i in range(grid_size):
-        for j in range(grid_size):
-            print(charset[playfield[i][j] + 1])
+
+    charset = ('O', '.', 'X')
+    for i in range(globals.grid_size):
+        for j in range(globals.grid_size):
+            print(charset[globals.playfield[i][j] + 1] + ' ', end='')
+        print('')
 
     return
