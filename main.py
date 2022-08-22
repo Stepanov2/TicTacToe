@@ -5,6 +5,8 @@ import gamerender
 import gamelogic
 
 
+
+
 #========initialization
 
 print('Привет!\n Добро пожаловать в крестики нолики на "произвольном" поле (в 3D; на льду')
@@ -17,24 +19,27 @@ if globals.grid_size != 3:
     _playerinput = input(f'Отлично! Сколько нужно выстроить в линию, чтобы выиграть (от 3 до {globals.grid_size})? ')
     while not inputprocessing.is_a_valid_int(_playerinput, lambda x: 3 <= x <= globals.grid_size):
         _playerinput = input(f'Непонятненько! Ещё раз. Число от 3 до {globals.grid_size}? ')
+globals.in_line = int(_playerinput)
 
 
 #===========main loop
 while True:
     gamelogic.initialize_playfield()
     globals.current_player = 1
+
     #============game is in progress loop
+                                                        #todo better check
     while not gamelogic.check_win_condition()  and not globals.playfield.prod():
         gamerender.clearscreen()
-        gamerender.return_playfield()
+        gamerender.print_playfield()
         _playerinput = input(f'Ходят {globals.whose_turn[globals.current_player]} ')
         while True:
             if not inputprocessing.is_a_valid_int(_playerinput, lambda x: 0 <= x <= globals.grid_size ** 2):
-                gamerender.return_playfield()
+                gamerender.print_playfield()
                 _playerinput = input(f'Ваш ход - инвалид. Введите целое число от 1 до {globals.grid_size ** 2} ')
                 continue
             if not gamelogic.check_move_validity(int(_playerinput)):
-                gamerender.return_playfield()
+                gamerender.print_playfield()
                 _playerinput = input(f'Ваш ход - инвалид, ибо эта клетка уже занята! ')
                 continue
             break
@@ -42,7 +47,7 @@ while True:
     #======This game has just ended
 
     gamerender.clearscreen()
-    gamerender.return_playfield()
+    gamerender.print_playfield()
     if gamelogic.check_win_condition():
         print(f'Ура, победили {globals.whose_turn[-globals.current_player]}!')
     else:
