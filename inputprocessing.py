@@ -14,13 +14,17 @@ def yes_or_no(inputstring):
     if inputstring in nolist:
         return False
     return None
-def is_a_vaild_int(inputstring, condition=range(1,10)):#TODO try lamda X
+def is_a_vaild_int(inputstring, condition=lambda x: 1 <= x <10): #TODO try lamda X lambda x: 1 <= x <10 range(0,7)
     """This checks that input is an int and in range [1..9]
-    Specify different generator function to use this code elsewhere
+    Specify different lambda function or iterable to use this code elsewhere
     """
-    if not isinstance(inputstring, str): return Flase
+    if not isinstance(inputstring, str): return False
     try:
         integer = int(inputstring)
     except ValueError:
         return False
-    return integer in condition
+    try: #got an iterable
+        return integer in condition
+    except TypeError: #likely got a lambda instead
+        return condition(integer)
+

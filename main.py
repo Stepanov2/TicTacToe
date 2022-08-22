@@ -31,3 +31,6 @@ print(globals.playfield[0:3][0])
 print(globals.playfield[0:3][1])
 print(globals.playfield[0:3][2])
 
+print(inputprocessing.is_a_vaild_int('3'), range(0,7))
+print(inputprocessing.is_a_vaild_int('15'), range(0,7))
+print(inputprocessing.is_a_vaild_int('-2'), range(0,7))

@@ -3,6 +3,7 @@
 -1 means null
 0 means nothing"""
 import globals
+import numpy as np #Cheats enabled=)
 def initialize_playfield():
     """Filling playfield with a matrix of zeroes"""
     globals.playfield = []

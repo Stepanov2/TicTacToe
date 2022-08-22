@@ -1,5 +1,6 @@
 """Functions related to printing stuff"""
 import globals
+import numpy as np #Cheats enabled=)
 
 def print_playfield():
 
