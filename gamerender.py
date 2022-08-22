@@ -22,7 +22,7 @@ c={
 'Tinters':  '┬',
 'Binters':  '┴',
 'Hdash':    '─',
-'Vdash':    '┆'
+'Vdash':    '│'
 }
 _cross = (
     '   \\ /   ',
@@ -39,7 +39,7 @@ _none = ' ' * _cell_width
 def make_cell(number):
     """envelop number with correct number of spaces"""
     return (_none, '    ' + str(number) + '   ' if number // 10 else '    ' + str(number) + '    ', _none)
-def print_playfield():
+def print_playfield():#todo: do not regenerate this every time goddammit!
     """Main rendering function. i,j - index of element, y - index of line"""
     output = []
     print_in_this_cell=()
