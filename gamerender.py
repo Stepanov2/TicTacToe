@@ -2,9 +2,6 @@
 import globals
 import numpy as np #Cheats enabled=)
 
-
-
-
 def clearscreen():
     """Kinda. Sorta. os.system('cls') didn't work for me"""
     print('\n' * 40)

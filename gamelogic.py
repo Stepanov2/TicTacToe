@@ -16,7 +16,8 @@ def choice_to_index(choice):
     return (choice // globals.grid_size, choice % globals.grid_size)
 
 def check_win_condition(): #TODO let this get different playfield as an arg
-    """Determines if the game was globals.in_line after this move. Returns 1 for crosses, -1 for nolls, 0 if no winner"""
+    """Determines if the game was globals.in_line after this move.
+    Returns 1 for crosses, -1 for nolls, False if no winner"""
 
 
     max_offset = globals.grid_size - globals.in_line
@@ -59,7 +60,7 @@ def check_win_condition(): #TODO let this get different playfield as an arg
     return False
 
 def check_move_validity(move):
-    """Если клетка свободна двигаем игру вперёд"""
+    """If attempted move was valid, advance the game"""
     move = choice_to_index(move)
     if globals.playfield[move] == 0:
         globals.playfield[move] = globals.current_player

@@ -4,17 +4,15 @@ import inputprocessing
 import gamerender
 import gamelogic
 
-
-
-
-#========initialization
-
+#========initialization=======
+#request grid_sizw
 print('Привет!\n Добро пожаловать в крестики нолики на "произвольном" поле (в 3D; на льду')
 _playerinput = input('Какого размера сделаем поле (от 3 до 10)? ')
 while not inputprocessing.is_a_valid_int(_playerinput, lambda x: 3 <= x <= 10):
     _playerinput = input('Непонятненько! Какого размера сделаем поле (от 3 до 10)? ')
 globals.grid_size = int(_playerinput)
 
+#request in_line
 if globals.grid_size != 3:
     _playerinput = input(f'Отлично! Сколько нужно выстроить в линию, чтобы выиграть (от 3 до {globals.grid_size})? ')
     while not inputprocessing.is_a_valid_int(_playerinput, lambda x: 3 <= x <= globals.grid_size):
@@ -22,14 +20,13 @@ if globals.grid_size != 3:
 globals.in_line = int(_playerinput)
 
 
-#===========main loop
+#===========main loop============
 while True:
     gamelogic.initialize_playfield()
     globals.current_player = 1
 
-    #============game is in progress loop
-                                                        #todo better check
-    while not gamelogic.check_win_condition()  and not globals.playfield.prod():
+    #============game is in progress loop=================
+    while not gamelogic.check_win_condition() and 0 in globals.playfield:
         gamerender.clearscreen()
         gamerender.print_playfield()
         _playerinput = input(f'Ходят {globals.whose_turn[globals.current_player]} ')
@@ -44,8 +41,7 @@ while True:
                 continue
             break
 
-    #======This game has just ended
-
+    #======This game has just ended===========
     gamerender.clearscreen()
     gamerender.print_playfield()
     if gamelogic.check_win_condition():
