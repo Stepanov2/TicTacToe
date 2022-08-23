@@ -1,18 +1,19 @@
-import numpy as np #Cheats enabled=)
+import numpy as np  # Cheats enabled=)
 import globals
 import inputprocessing
 import gamerender
 import gamelogic
 
-#========initialization=======
-#request grid_sizw
+# ========Querying user about what sort of game he/she wants=======
+
+# request grid_size
 print('Привет!\n Добро пожаловать в крестики нолики на "произвольном" поле (в 3D; на льду)')
 _playerinput = input('Какого размера сделаем поле (от 3 до 10)? ')
 while not inputprocessing.is_a_valid_int(_playerinput, lambda x: 3 <= x <= 10):
     _playerinput = input('Непонятненько! Какого размера сделаем поле (от 3 до 10)? ')
 globals.grid_size = int(_playerinput)
 
-#request in_line
+# request in_line unless user prefers vanilla tic tac toe========
 if globals.grid_size != 3:
     _playerinput = input(f'Отлично! Сколько нужно выстроить в линию, чтобы выиграть (от 3 до {globals.grid_size})? ')
     while not inputprocessing.is_a_valid_int(_playerinput, lambda x: 3 <= x <= globals.grid_size):
@@ -20,18 +21,21 @@ if globals.grid_size != 3:
 globals.in_line = int(_playerinput)
 
 
-#===========main loop============
+# ===========Main loop============
+
 while True:
+    # initialize new game
     gamelogic.initialize_playfield()
     globals.current_player = 1
     gamerender.init_playfield()
 
-    #============game is in progress loop=================
+    # ============Game is in progress loop=================
+
     while not gamelogic.check_win_condition() and 0 in globals.playfield:
-        gamerender.clearscreen()
         gamerender.print_playfield()
         _playerinput = input(f'Ходят {globals.whose_turn[globals.current_player]} ')
-        while True:
+
+        while True:  # Checking that input is correct. Re-querying until it is.
             if not inputprocessing.is_a_valid_int(_playerinput, lambda x: 0 <= x <= globals.grid_size ** 2):
                 gamerender.print_playfield()
                 _playerinput = input(f'Ваш ход - инвалид. Введите целое число от 1 до {globals.grid_size ** 2} ')
@@ -41,14 +45,15 @@ while True:
                 _playerinput = input(f'Ваш ход - инвалид, ибо эта клетка уже занята! ')
                 continue
             break
-        gamerender.update_playfield(int(_playerinput))
-        globals.current_player *= -1  # Swapping current player
+
+        gamerender.update_playfield(int(_playerinput))   # Updating game with (now validated) move
+        globals.current_player *= -1                     # And swapping current player
 
     #======This game has just ended===========
-    gamerender.clearscreen()
+
     gamerender.print_playfield()
     if gamelogic.check_win_condition():
-        print(f'Ура, победили {globals.whose_turn[-globals.current_player]}!')
+        print(f'Ура, победили {globals.whose_turn[gamelogic.check_win_condition()]}!')
     else:
         print('Ничья!')
 
@@ -59,5 +64,3 @@ while True:
     if not inputprocessing.yes_or_no(_playerinput):
         print('See you later, alligator! ')
         quit(0)
-
-

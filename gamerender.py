@@ -33,7 +33,7 @@ _noll = (
 _none = ' ' * _cell_width
 
 
-def clearscreen():
+def _clearscreen():
     """Kinda. Sorta. os.system('cls') didn't work for me"""
     print('\n' * 40)
 
@@ -46,6 +46,7 @@ def _make_cell(number):
 def print_playfield():
     """Prints _output"""
     global _output
+    _clearscreen()
     for i in range(len(_output)): print(_output[i])
 
 

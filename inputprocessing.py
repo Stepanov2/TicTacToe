@@ -1,5 +1,7 @@
 """functions to validate user input"""
 import re
+
+
 def yes_or_no(inputstring):
     """This tries to convert user input (string) to bool or returns None otherwise"""
     if not isinstance(inputstring, str): return None
