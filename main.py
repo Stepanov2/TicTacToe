@@ -6,7 +6,7 @@ import gamelogic
 
 #========initialization=======
 #request grid_sizw
-print('Привет!\n Добро пожаловать в крестики нолики на "произвольном" поле (в 3D; на льду')
+print('Привет!\n Добро пожаловать в крестики нолики на "произвольном" поле (в 3D; на льду)')
 _playerinput = input('Какого размера сделаем поле (от 3 до 10)? ')
 while not inputprocessing.is_a_valid_int(_playerinput, lambda x: 3 <= x <= 10):
     _playerinput = input('Непонятненько! Какого размера сделаем поле (от 3 до 10)? ')
