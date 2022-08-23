@@ -4,7 +4,8 @@ import re
 
 def yes_or_no(inputstring):
     """This tries to convert user input (string) to bool or returns None otherwise"""
-    if not isinstance(inputstring, str): return None
+    if not isinstance(inputstring, str):
+        return None
 
     inputstring = re.sub('[^ \w]', '', inputstring.strip().lower())  # leave only letters, digits and inner spaces
     yeslist = ('da', 'yes', 'yep', 'true', 'likely', 'да',
@@ -24,7 +25,8 @@ def is_a_valid_int(inputstring, condition=lambda x: 1 <= x < 10):
     """This checks that input is an int and in range [1..9]
     Specify different lambda function or iterable to use this code elsewhere
     """
-    if not isinstance(inputstring, str): return False
+    if not isinstance(inputstring, str):
+        return False
     try:
         integer = int(inputstring)
     except ValueError:
