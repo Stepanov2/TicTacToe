@@ -56,7 +56,7 @@ def init_playfield():
 
     #Do not run generation again, if it was already done in previous game
     if len(_empty_playfield):
-        _output = _empty_playfield
+        _output = _empty_playfield.copy()
         return
 
     _output=[]
