@@ -24,6 +24,7 @@ globals.in_line = int(_playerinput)
 while True:
     gamelogic.initialize_playfield()
     globals.current_player = 1
+    gamerender.init_playfield()
 
     #============game is in progress loop=================
     while not gamelogic.check_win_condition() and 0 in globals.playfield:
@@ -40,6 +41,8 @@ while True:
                 _playerinput = input(f'Ваш ход - инвалид, ибо эта клетка уже занята! ')
                 continue
             break
+        gamerender.update_playfield(int(_playerinput))
+        globals.current_player *= -1  # Swapping current player
 
     #======This game has just ended===========
     gamerender.clearscreen()
