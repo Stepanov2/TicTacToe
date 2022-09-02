@@ -36,7 +36,7 @@ while True:
         _playerinput = input(f'Ходят {globals.whose_turn[globals.current_player]} ')
 
         while True:  # Checking that input is correct. Re-querying until it is.
-            if not inputprocessing.is_a_valid_int(_playerinput, lambda x: 0 <= x <= globals.grid_size ** 2):
+            if not inputprocessing.is_a_valid_int(_playerinput, lambda x: 1 <= x <= globals.grid_size ** 2):
                 gamerender.print_playfield()
                 _playerinput = input(f'Ваш ход - инвалид. Введите целое число от 1 до {globals.grid_size ** 2} ')
                 continue
